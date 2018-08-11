@@ -51,6 +51,7 @@ function checked() {
 
 /* Call functions */
 firstUppercase(str);
-let arrSumm = summArr(arr);
-sqrtArr(arrSumm);
+let arrFihish = powArrElem(arr);
+arrFihish = summArr(arr);
+sqrtArr(arrFihish);
 checked();
