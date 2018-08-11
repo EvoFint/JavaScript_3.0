@@ -51,7 +51,8 @@ function hiringEmployees() {
                     empName[0] = empName[0].charAt(0).toUpperCase() + empName[0].substr(1).toLowerCase();
                     mainList.employees.empSurname[i] = empName[0];
                     empName[1] = empName[1].charAt(0).toUpperCase() + empName[1].substr(1).toLowerCase();
-                    mainList.employees.empName[i] = empName[1];empName[0] = empName[2].charAt(0).toUpperCase() + empName[2].substr(1).toLowerCase();
+                    mainList.employees.empName[i] = empName[1];
+                    empName[0] = empName[2].charAt(0).toUpperCase() + empName[2].substr(1).toLowerCase();
                     mainList.employees.empPatr[i] = empName[2];
                 } else if(empName.length < 3) {
                     alert('Необходимо ввести полное ФИО!');
