@@ -11,16 +11,35 @@ let week = [
 /* week */
 function getWeekStyle(i) {
     if (i === 5 || i === 6) { 
-           return "font-weight:bold;";
+        return "font-weight:bold;";
+    } else {
+        return '';
     };
+};
+function getStyleItalic(i, now) {
+    if(i == now) {
+        return "font-style:italic;";
+    } else {
+        return '';
+    };
+};
+function getTodayStyle(i) {
+    let a = i;
     let now = new Date().getDay();
-    now = Number(now) - 1;
-    if(i === now) {
-        return "font-style:italic";
-    }
- };
+    if(now == 6 || now == 0) {
+        if(now == 6) {
+            now = 5;
+            return getStyleItalic(i, now);
+        } else {
+            now = 6;
+            return getStyleItalic(i, now);
+        };
+    } else {
+        return getStyleItalic(i, now);
+    };
+};
 for (let i = 0; i < week.length; i++) {
-     document.write('<p style="' + getWeekStyle(i) + '">' + week[i] + '<\p>');
+    document.write('<p style="' + getWeekStyle(i) + getTodayStyle(i) + '">' + week[i] + '<\p>');
 };
 
 /* Array */

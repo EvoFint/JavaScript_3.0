@@ -17,8 +17,7 @@ function powArrElem(arr) {
             arr[i] = Math.pow(arr[i], 3);
         };
     }; 
-    console.log(arr)
-}
+};
 function summArr(arr) {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
