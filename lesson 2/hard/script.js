@@ -35,6 +35,7 @@ function getTodayStyle(i) {
             return getStyleItalic(i, now);
         };
     } else {
+        now = now - 1;
         return getStyleItalic(i, now);
     };
 };
