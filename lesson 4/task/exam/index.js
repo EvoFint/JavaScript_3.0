@@ -47,5 +47,3 @@ module.exports = {
     secondName: 'Surname',
     task: getFriendlyNumbers
 }
-
-//getFriendlyNumbers(1, 300);
