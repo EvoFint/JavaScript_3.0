@@ -1,16 +1,21 @@
 function getFriendlyNumbers(start, end) {
     let finish = [];
-    for(let i = start; i < end; i++) {
-        sum1 = getDivisorsSum(i);
-        sum2 = getDivisorsSum(sum1);
-        if(sum2 == i && sum1 != sum2 && sum1 > start) {
-            let c = writeInArr(sum1, sum2);
-            finish = finish.push(c);
+    if(start > 0 && start < end && typeof(start) == 'number' && typeof(end) == 'number') {
+        for(let i = start; i < end; i++) {
+            sum1 = getDivisorsSum(i);
+            sum2 = getDivisorsSum(sum1);
+            if(sum2 == i && sum1 != sum2 && sum1 > i) {
+                let c = writeInArr(sum2, sum1);
+                let ar = finish.push(c);
+            }
         }
+        return finish;
+    } else if(start == end) {
+        return [];
+    } else {
+        return false;
     }
-    return finish;
 }
-console.log(getFriendlyNumbers(1, 300));
 function getSumm(arr) {
     let sum = 0;
     for(let i = 0; i < arr.length; i++) {
@@ -31,8 +36,9 @@ function getDivisorsSum(num) {
     return getSumm(getDivisors(num));
 }
 function writeInArr(a, b) {
-    let c = a + ', ' + b;
-    return c;
+    let arr = [];
+    let c = arr.push(a, b);
+    return arr;
 }
 
 
