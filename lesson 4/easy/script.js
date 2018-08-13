@@ -1,9 +1,9 @@
 /* variables */
-// var budget = prompt("Ваш Бюджет на месяц?");
-// var nameShop = prompt("Название вашего магазина?");
+var budget = prompt("Ваш Бюджет на месяц?");
+var nameShop = prompt("Название вашего магазина?");
 var mainList = {
-    // money: budget,
-    // name: nameShop,
+    money: budget,
+    name: nameShop,
     shopGoods: [],
     shopItems: [],
     employees: {
@@ -27,23 +27,23 @@ function selectionOfGoods() {
             alert('Необходимо ввести тип товара!');
             i--;
         }
-    };
-};
+    }
+}
 function checkDiscount(price, discount) {
     if(discount == true){
         let a = price * 0.8;
         return a;
-    };
+    }
     return price;
-};
+}
 function calcOneDayBudget(money) {
     return money / 30;
-};
+}
 function hiringEmployees() {
     for(let i = 0; i < 4; i++) {
         let empName = prompt("Напишите Ваше ФИО.");
         if(empName === null) {
-            alert('Необходимо ввести ФИО!')
+            alert('Необходимо ввести ФИО!');
             i--;
         } else {
             if(empName != '') {
@@ -64,12 +64,12 @@ function hiringEmployees() {
                     i--;
                 }
             } else {
-                alert('Вы ввели пустое поле. Необходимо ввести ФИО!')
+                alert('Вы ввели пустое поле. Необходимо ввести ФИО!');
                 i--;
             }
         }
     }
-};
+}
 function checkItems(arr) {
     let a = arr.match(/\d*[^\D]+/g);
     if(a == null) {
@@ -78,8 +78,8 @@ function checkItems(arr) {
     } else {
         alert('Вы не можете использовать в названии товара цифры или специальные символы!');
         return true;
-    };
-};
+    }
+}
 function chooseShopItems() {
     let inputIsIncorrect = true;
     while(inputIsIncorrect) {
@@ -89,25 +89,25 @@ function chooseShopItems() {
             inputIsIncorrect = true;
         } else {
             inputIsIncorrect = checkItems(items);
-        };
-    };
-};
+        }
+    }
+}
 function showItems(arr) {
     arr.forEach((item, i, arr) => {
         alert('У нас вы можете купить: ' + (i + 1) + ') ' + item);
     });
-};
+}
 function showInConsole(arr) {
     for(let i in arr) {
         console.log('Наш магазин включает в себя: ' + arr[i]);
-    };
+    }
 }
 /* End functions */
 
-/* selectionOfGoods();
+selectionOfGoods();
 hiringEmployees();
 console.log(mainList.employees.empName);
-alert('Ваш бюджет на 1 день составляет: ' + calcOneDayBudget(mainList.money)); */
+alert('Ваш бюджет на 1 день составляет: ' + calcOneDayBudget(mainList.money));
 chooseShopItems();
 showItems(mainList.shopItems);
 showInConsole(mainList.shopItems);
