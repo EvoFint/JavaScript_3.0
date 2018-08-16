@@ -1,5 +1,5 @@
-// getNow();
-// getDay();
+getNow();
+getDay();
 
 document.querySelector('.btn').onclick = function () {
     let a = document.getElementsByTagName('input')[0];
