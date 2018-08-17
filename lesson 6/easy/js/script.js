@@ -46,12 +46,14 @@ btn.addEventListener('click', () => {
             money = prompt('Введите Ваш бюджет.', '');
         }
         budgetValue.textContent = money; 
+        budgetValue.style.backgroundColor = 'grey';
 
         name = prompt('Введите название Вашего магазина.', '');
         while (name == '' || name == null) {
             name = prompt('Введите название Вашего магазина.', '');
         }
         nameValue.textContent = name.toUpperCase();
+        nameValue.style.backgroundColor = 'grey';
 
         let discount = prompt('У вас имеется дисконтная карта? Введите "Да" или "Нет"', '');
         checkDiscount(discount)
@@ -72,6 +74,7 @@ goodsBtn.addEventListener('click', () => {
         fullStringInput = emptyInputs.join();
         mainList.shopGoods = fullStringInput.match(/[\wа-яё]+/ig);
         goodsValue.textContent = mainList.shopGoods.join(', ');
+        goodsValue.style.backgroundColor = 'grey';
     }
 });
 chooseItem.addEventListener('change', () => {
@@ -81,6 +84,7 @@ chooseItem.addEventListener('change', () => {
             checkItems(items);
         }
         itemsValue.textContent = mainList.shopItems.join(', ');
+        itemsValue.style.backgroundColor = 'grey';
     }
 });
 timeValue.addEventListener('change', () => {
@@ -98,23 +102,31 @@ budgetBtn.addEventListener('click', () => {
 });
 employersBtn.addEventListener('click', () => {
     if(mainList.open == true) {
+        employersValue.textContent = '';
         let emptyInputs = [];
         let notEmptyInputs = [];
         let fullStringInput = '';
         for(let i = 0; i < hireEmployersItem.length; i++) {
-            let name = hireEmployersItem[i].value;
-            if(typeof(name) === 'string' && typeof(name) != null) {
-                emptyInputs[i] = name;
+            let emptyName = hireEmployersItem[i].value;
+            let name;
+            if(typeof(emptyName) === 'string' && typeof(emptyName) != null) {
+                name = emptyName.match(/[а-яё]/ig)
+                if(name != null) {
+                    emptyInputs[i] = emptyName;
+                } else {
+                    alert('Имя может содержать только символы русского алфавита!\n' + emptyName + ' - Неверное имя!');
+                } 
             } else {
                 i--;
             }
         }
         fullStringInput = emptyInputs.join();
-        notEmptyInputs = fullStringInput.match(/[\wа-яА-ЯёЁ']+/g);
+        notEmptyInputs = fullStringInput.match(/[а-яА-ЯёЁ']+/g);
         for(let i = 0; i < notEmptyInputs.length; i++) {
             mainList.employees[i] = notEmptyInputs[i];
             employersValue.textContent += mainList.employees[i] + ', ';
         }
+        employersValue.style.backgroundColor = 'grey';
     }
 });
 
