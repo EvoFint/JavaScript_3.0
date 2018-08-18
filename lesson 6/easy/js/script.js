@@ -36,6 +36,14 @@ var mainList = {
 };
 /* end variables */
 
+/* disabled btn */
+btn.disabled = true;
+goodsBtn.disabled = true;
+budgetBtn.disabled = true;
+employersBtn.disabled = true;
+/* disabled btn */
+
+
 countBudgetValue.onkeypress = function (e) {
     return false;
 };
@@ -94,11 +102,23 @@ timeValue.addEventListener('change', () => {
     } else {
         isOpenValue.style.backgroundColor = 'red';
     }
+    if(mainList.open == true) {
+        btn.disabled = false;
+        goodsBtn.disabled = false;
+        budgetBtn.disabled = false;
+        employersBtn.disabled = false;
+    } else {
+        btn.disabled = true;
+        goodsBtn.disabled = true;
+        budgetBtn.disabled = true;
+        employersBtn.disabled = true;
+    }
 });
 budgetBtn.addEventListener('click', () => {
     if(mainList.open == true) {
         countBudgetValue.value = money / 30;
     }
+    countBudgetValue.disabled = true;
 });
 employersBtn.addEventListener('click', () => {
     if(mainList.open == true) {
