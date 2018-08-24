@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //timer
 
-    let deadline = '2018-08-25';
+    let deadline = '2018-03-25';
 
     function getTimerRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date());
@@ -118,6 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let hours = timer.querySelector('.hours');
         let minutes = timer.querySelector('.minutes');
         let seconds = timer.querySelector('.seconds');
+        let timeInterval = setInterval(updateClock, 1000)
 
         function updateClock() {
             let t = getTimerRemaining(endtime);
@@ -131,7 +132,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         updateClock();
-        let timeInterval = setInterval(updateClock, 1000)
     };
 
     setClock('timer', deadline);
