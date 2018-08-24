@@ -4,9 +4,26 @@ window.addEventListener('DOMContentLoaded', () => {
     let tabContent = document.getElementsByClassName('info-tabcontent');
     let info = document.getElementsByClassName('info-header')[0];
 
+    /* scroll */
+    let about = document.getElementById('about');
+    let photo = document.getElementById('photo');
+    let price = document.getElementById('price');
+    let contacts = document.getElementById('contacts');
+    let menu = document.querySelectorAll('.menu');
+    var requestID;
+    /* end */
+
+    /*  */
+    // console.log(about.offsetTop);
+    // console.log(photo.offsetTop);
+    // console.log(price.offsetTop);
+    // console.log(contacts.offsetTop);
+    // console.log(menu);
+    /*  */
+
     hideTabContent(1);
 
-    info.addEventListener('click', () => {
+    info.addEventListener('click',() => {
         let target = event.target;
         if(target.className == 'info-header-tab') {
             for(let i = 0; i < tab.length; i++) {
@@ -16,7 +33,36 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-    })
+    });
+
+    document.querySelector('ul').addEventListener('click',function(e) {
+        let target = e.target;
+        
+        if (e.target.tagName === "A") {
+            let	t = 0.4;
+
+			e.preventDefault();
+			let anchor = target.href.replace(/.*(#.*)/, '$1');
+			let	coords = document.querySelector(anchor).getBoundingClientRect().top;
+			let	w = window.pageYOffset;
+			let	start  = null;
+
+			let tick = (now) => {
+				if (start === null) start = now;
+
+                let progress = now - start;
+                let position = (coords < 0 ? Math.max(w - progress/t, w + coords) : Math.min(w + progress/t, w + coords));
+                window.scrollTo(0,position);
+
+
+				if (position != coords + w) {
+					requestAnimationFrame(tick);
+				} 
+			};
+
+            requestAnimationFrame(tick);
+		}
+    });
 
     function hideTabContent(a) {
         for(let i = a; i < tabContent.length; i++) {
