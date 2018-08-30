@@ -226,10 +226,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function showSlides(n) {
         if(n > slides.length) {
-            let slideIndex = 1;
+            slideIndex = 1;
         };
         if(n < 1) {
-            let slideIndex = slides.length;
+            slideIndex = slides.length;
         };
 
         for(let i = 0; i < slides.length; i++) {
