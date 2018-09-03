@@ -176,7 +176,6 @@ window.addEventListener('DOMContentLoaded', () => {
     messageIcon.failure = '<img style="width: 50px; " src="icons/error.svg" alt="error">';
 
     let form = document.getElementsByClassName('main-form')[0];
-    let input = form.getElementsByTagName('input');
     let statusMessage = document.createElement('div');
     statusMessage.classList.add('status');
 
