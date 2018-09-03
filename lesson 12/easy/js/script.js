@@ -278,7 +278,8 @@ window.addEventListener('DOMContentLoaded', () => {
     persons.addEventListener('change', function() {
         personsSum = this.value;
         let correctPS = personsSum.match(/\D/g);
-        if (correctPS == null) {
+        let plusDS = personsSum.match(/\+/g);
+        if (correctPS == null && plusDS == null) {
             personsSum = +personsSum;
             total = (daysSum + personsSum)*4000;
             if(restDays.value == '') {

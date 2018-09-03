@@ -10,35 +10,35 @@ function calc() {
     var total = 0;
 
     totalValue.innerHTML = 0;
-
-    persons.addEventListener('change', function () {
+    persons.onkeyup = function (input){
+        return this.value = this.value.replace(/[^\d]/g, '');
+    }; 
+    persons.addEventListener('input', function () {
         personsSum = this.value;
-        var correctPS = personsSum.match(/\D/g);
-        if (correctPS == null) {
-            personsSum = +personsSum;
-            total = (daysSum + personsSum) * 4000;
-            if (restDays.value == '') {
-                totalValue.innerHTML = 0;
-            } else {
-                totalValue.innerHTML = total;
-            }
+        personsSum = +personsSum;
+        total = (daysSum + personsSum) * 4000;
+        if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
+            totalValue.innerHTML = 0;
+        } else {
+            totalValue.innerHTML = total;
         }
+        
     });
-    restDays.addEventListener('change', function () {
+    restDays.onkeyup = function (input){
+        return this.value = this.value.replace(/[^\d]/g, '');
+    }; 
+    restDays.addEventListener('input', function () {
         daysSum = this.value;
-        var correctDS = daysSum.match(/\D/g);
-        if (correctDS == null) {
-            daysSum = +daysSum;
-            total = (daysSum + personsSum) * 4000;
-            if (restDays.value == '') {
-                totalValue.innerHTML = 0;
-            } else {
-                totalValue.innerHTML = total;
-            }
+        daysSum = +daysSum;
+        total = (daysSum + personsSum) * 4000;
+        if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
+            totalValue.innerHTML = 0;
+        } else {
+            totalValue.innerHTML = total;
         }
     });
     place.addEventListener('change', function () {
-        if (persons.value == '' || restDays.value == '') {
+        if (persons.value == '' || restDays.value == '' || +persons.value == 0 || +restDays.value == 0) {
             totalValue.innerHTML = 0;
         } else {
             var a = total;
