@@ -123,9 +123,8 @@ function calc() {
         if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
-        
     });
     restDays.onkeyup = function (input){
         return this.value = this.value.replace(/[^\d]/g, '');
@@ -137,7 +136,7 @@ function calc() {
         if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
     });
     place.addEventListener('change', function () {
@@ -233,10 +232,10 @@ function slider() {
     function showSlides(n) {
         if (n > slides.length) {
             slideIndex = 1;
-        };
+        }
         if (n < 1) {
             slideIndex = slides.length;
-        };
+        }
 
         for (var i = 0; i < slides.length; i++) {
             slides[i].style.display = 'none';

@@ -20,9 +20,8 @@ function calc() {
         if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
-        
     });
     restDays.onkeyup = function (input){
         return this.value = this.value.replace(/[^\d]/g, '');
@@ -34,7 +33,7 @@ function calc() {
         if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            totalValue.innerHTML = total * place.options[place.selectedIndex].value;
         }
     });
     place.addEventListener('change', function () {
