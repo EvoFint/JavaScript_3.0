@@ -38,11 +38,37 @@ function ajax() {
     var statusMessage = document.createElement('div');
     statusMessage.classList.add('status');
 
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+    
+        var request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+        var formData = new FormData(form);
+        request.send(formData);
+    
+        request.onreadystatechange = function () {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = messageIcon.loading + message.loading;
+            } else if (request.readyState === 4) {
+                if (request.status == 200 && request.status < 300) {
+                    statusMessage.innerHTML = messageIcon.success + message.success;
+                }
+            } else {
+                statusMessage.innerHTML = messageIcon.failure + message.failure;
+            }
+        };
+    
+        for (var i = 0; i < input.length; i++) {
+            input[i].value = '';
+        }
+    });
+
     //Form 2
     var contactForm = document.getElementById('form');
     var inputContactForm = contactForm.getElementsByTagName('input');
-
-    console.log(contactForm);
 
     contactForm.addEventListener('submit', function () {
         event.preventDefault();
